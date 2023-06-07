@@ -4,6 +4,7 @@ require "net/http"
 require "json"
 require_relative "instances"#Archivo creado por nosotros EL USUARIO !!!!
 require_relative "text-generators"
+require_relative "my-timer"
 
 
 set title: 'Kurosawa 2D', background: 'maroon', width: 1200, height: 900
@@ -51,7 +52,7 @@ end
 
 #####THE API UPDATE
 
-
 generador_texto(titulos, 1, 600, 160)
 
+puts timer()
 show()
