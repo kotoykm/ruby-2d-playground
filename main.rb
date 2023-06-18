@@ -1,11 +1,8 @@
 require "ruby2d"
-require "uri"
-require "net/http"
-require "json"
 require_relative "instances"#Archivo creado por nosotros EL USUARIO !!!!
 require_relative "text-generators"
 require_relative "my-timer"
-
+require_relative "myapi"
 
 set title: 'Kurosawa 2D', background: 'maroon', width: 1200, height: 900
 
@@ -26,17 +23,6 @@ titulos = titles.map do |d|
             d.chomp.split("#")
           end
 
-#----------------------------------------
-
-url = URI("https://pokeapi.co/api/v2/pokemon/shinx")
-https = Net::HTTP.new(url.host, url.port)
-
-
-https.use_ssl = true
-
-request = Net::HTTP::Get.new(url) 
-response = https.request(request)
-data = JSON.parse(response.read_body)
 
 #-----------------------------------------
 
@@ -54,5 +40,16 @@ end
 
 generador_texto(titulos, 1, 600, 160)
 
-puts timer()
+# apinasa = Api.new("https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1&api_key=tBzJ96m7oLRbNXDguPW8LDW2B9hxASiSdSINUAlG")
+# apipoke = Api.new("https://pokeapi.co/api/v2/pokemon/ditto")
+apiMovie = Api.new("https://www.omdbapi.com/?i=tt18925334&apikey=d089b4eb")
+pearl = apiMovie.result()
+
+puts pearl["Title"]
+puts pearl["Year"]
+puts pearl["Genre"]
+puts pearl["Director"]
+puts pearl["Actors"]
+puts pearl["Plot"]
+
 show()
