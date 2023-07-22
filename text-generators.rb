@@ -7,7 +7,7 @@ def generador_parrafos(arrayInput_input, arrIndex, poc_x,poc_y)
   lineas = textoStripe.scan(/.{1,28}(?:\s|\z)/)
 
   lineas.each_with_index do |lineasCrop, indiceCrop| #Each with index devuelve ambos el valor y el indice de un array.
-    puts "#{lineasCrop},#{indiceCrop}"
+    # puts "#{lineasCrop},#{indiceCrop}"
     Text.new(
     lineasCrop,
     x: poc_x, y: (poc_y + (indiceCrop+1) * interlineado),
